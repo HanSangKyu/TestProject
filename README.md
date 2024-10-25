@@ -31,3 +31,22 @@
   f.Network : Retrofit (https://github.com/square/retrofit)
 
   g.UI Layer : 상태는 아래로 이동하고 이벤트는 위로 이동하는 단방향 데이터 흐름(UDF)으로 구성되어 있습니다.
+
+3. 모듈 구조 
+
+* app 
+
+* core
+
+  * data 
+
+  * data-api 
+
+  * designsystem 
+
+  * domain
+
+  * model
+
+* fearue - 
+
