@@ -2,8 +2,7 @@ package com.example.main.model
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
-import com.example.model.Response
-import java.time.LocalDateTime
+import com.example.model.ProductList
 
 @Stable
 sealed class MusinsaUiState {
@@ -11,7 +10,7 @@ sealed class MusinsaUiState {
     data object Loading : MusinsaUiState()
 
     @Immutable
-    data class Success(val data:Response) : MusinsaUiState()
+    data class Success(val data:ProductList) : MusinsaUiState()
 
     @Immutable
     data class Error(val message: String) : MusinsaUiState()

@@ -1,6 +1,6 @@
 package com.example.main.home
 
 import com.airbnb.mvrx.MavericksState
-import com.example.model.Response
+import com.example.model.ProductList
 
-data class InterViewStatus(val posts: Response? = null,val link:String="") : MavericksState
+data class InterViewStatus(val posts: ProductList? = null, val link:String="") : MavericksState

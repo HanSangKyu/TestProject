@@ -5,7 +5,7 @@ import com.airbnb.mvrx.MavericksViewModelFactory
 import com.airbnb.mvrx.hilt.AssistedViewModelFactory
 import com.airbnb.mvrx.hilt.hiltMavericksViewModelFactory
 import com.example.main.home.InterViewStatus
-import com.example.model.Response
+import com.example.model.ProductList
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -14,7 +14,7 @@ import dagger.assisted.AssistedInject
 class ProductMavericksViewModel @AssistedInject constructor(
     @Assisted state: InterViewStatus,
 ) : MavericksViewModel<InterViewStatus>(state) {
-    fun setData(selectedDate: Response) {
+    fun setData(selectedDate: ProductList?) {
         setState {
             copy(
                 posts = selectedDate,

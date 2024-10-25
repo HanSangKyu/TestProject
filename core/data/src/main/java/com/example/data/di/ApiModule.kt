@@ -40,7 +40,7 @@ internal object ApiModule {
 
     @Provides
     @Singleton
-    fun provideReservationApi(
+    fun provideProductApi(
         okHttpClient: OkHttpClient,
         converterFactory: Converter.Factory,
     ): ProductApi {

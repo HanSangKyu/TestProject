@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,13 +26,15 @@ import com.example.model.Banner
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun BannerBox(banner: Banner, currentPage: Int, totalPages: Int) {
+fun BannerBox(banner: Banner, pagerState: PagerState) {
 
     Box(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
         GlideImage(
             model = banner.thumbnailURL,  // 이미지 URL 또는 로컬 리소스
             contentDescription = banner.description,
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().graphicsLayer {
+                translationX = pagerState.currentPageOffsetFraction * size.width * 0.5f
+            },
             contentScale = ContentScale.Crop, // 이미지를 잘라서 보여줌
         )
         Column(
@@ -62,5 +66,5 @@ fun BannerBox(banner: Banner, currentPage: Int, totalPages: Int) {
 @Preview(showBackground = true)
 @Composable
 fun BannerCardPreview() {
-    BannerBox(Banner(title = "타이틀", thumbnailURL = "https://example.com/image.jpg", description = "요약"),1,5) // 5회 방문 예시
+//    BannerBox(Banner(title = "타이틀",     )
 }

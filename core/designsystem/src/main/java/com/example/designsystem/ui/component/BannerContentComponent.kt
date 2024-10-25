@@ -60,8 +60,7 @@ fun BannerContentComponent(banners: List<Banner>,    onNavigateToDetailScreen: (
                 ) {
                     BannerBox(
                         banner = it,
-                        currentPage = pageIndex,
-                        totalPages = size
+                        pagerState = pagerState
                     )
                 }
 

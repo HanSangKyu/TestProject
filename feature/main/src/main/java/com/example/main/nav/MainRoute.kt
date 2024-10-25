@@ -4,5 +4,5 @@ sealed class MainRoute(
     val name: String
 ) {
     object MainScreen : MainRoute("MainScreen")
-    object DetailScreen : MainRoute("DetailScreen")
+    object WebViewScreen : MainRoute("WebViewScreen")
 }

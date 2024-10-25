@@ -15,8 +15,8 @@ import com.example.main.home.LinkRoute
 
 @Composable
 fun MainNavHost(
-    viewModel: HomeViewModel=  hiltViewModel(),
-    viewModel1: ProductMavericksViewModel = mavericksViewModel()
+    homeViewModel: HomeViewModel=  hiltViewModel(),
+    productMavericksViewModel: ProductMavericksViewModel = mavericksViewModel()
 ) {
     val navController = rememberNavController()
 
@@ -27,11 +27,9 @@ fun MainNavHost(
         composable(
             route = MainRoute.MainScreen.name,
             enterTransition = {
-                // 홈에서 들어올 때는 기본 슬라이딩 없이 바로 표시
                 null
             },
             exitTransition = {
-                // 홈에서 상세로 갈 때는 왼쪽으로 슬라이딩
                 slideOutOfContainer(
                     AnimatedContentTransitionScope.SlideDirection.Left,
                     animationSpec = tween(700)
@@ -39,17 +37,16 @@ fun MainNavHost(
             }
         ) {
             HomeRoute(
-                viewModel = viewModel,
-                viewModel2 = viewModel1,
+                viewModel = homeViewModel,
+                productMavericksViewModel = productMavericksViewModel,
                 onNavigateToDetailScreen = { reservation ->
-                    viewModel1.setLink(reservation)
-                    navController.navigate(MainRoute.DetailScreen.name)
-//                    navController.navigate("${MainRoute.DetailScreen.name}/")
+                    productMavericksViewModel.setLink(reservation)
+                    navController.navigate(MainRoute.WebViewScreen.name)
                 }
             )
         }
         composable(
-            route = MainRoute.DetailScreen.name,
+            route = MainRoute.WebViewScreen.name,
             arguments = listOf(
             ),
             enterTransition = {
@@ -74,7 +71,7 @@ fun MainNavHost(
 //            val url = backStackEntry.arguments?.getString("reservation")
 //            val reservation = Json.decodeFromString<String>(reservationJson!!)
             LinkRoute(
-                viewModel2 = viewModel1,
+                viewModel2 = productMavericksViewModel,
                 onBack = { navController.popBackStack() }
             )
         }

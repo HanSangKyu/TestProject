@@ -59,4 +59,14 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
+
+    // Hilt Testing
+    androidTestImplementation(libs.hilt.android.testing.v2461)
+    kaptAndroidTest(libs.hilt.compiler.v244)
+
+    // Retrofit and MockWebServer
+    testImplementation(libs.mockwebserver.v491)
+    testImplementation(libs.kotlinx.coroutines.test) // Use the latest version
+
 }
+
